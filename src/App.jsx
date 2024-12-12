@@ -9,13 +9,37 @@ import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState(initialItems);
+
+  function handleAddItem(newItemText) {
+    const newItem = {
+      id: new Date().getTime(),
+      name: newItemText,
+      packed: false,
+    };
+
+    const newItems = [...items, newItem];
+    setItems(newItems);
+  }
+
+  function handleRemoveAllItems() {
+    setItems([]);
+  }
+
+  function handleResetToInitial() {
+    setItems(initialItems);
+  }
+
   return (
     <>
       <BackgroundHeading />
       <main>
         <Header />
         <ItemList items={items} />
-        <Sidebar setItems={setItems} />
+        <Sidebar
+          handleAddItem={handleAddItem}
+          handleRemoveAllItems={handleRemoveAllItems}
+          handleResetToInitial={handleResetToInitial}
+        />
       </main>
 
       <Footer />
