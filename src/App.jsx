@@ -21,6 +21,11 @@ function App() {
     setItems(newItems);
   }
 
+  function handleDeleteItem(id) {
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+  }
+
   function handleRemoveAllItems() {
     setItems([]);
   }
@@ -36,17 +41,25 @@ function App() {
     setItems(newItems);
   }
 
+  function handleMarkAllAsInComplete() {
+    const newItems = items.map((item) => {
+      return { ...item, packed: false };
+    });
+    setItems(newItems);
+  }
+
   return (
     <>
       <BackgroundHeading />
       <main>
         <Header />
-        <ItemList items={items} />
+        <ItemList items={items} handleDeleteItem={handleDeleteItem} />
         <Sidebar
           handleAddItem={handleAddItem}
           handleRemoveAllItems={handleRemoveAllItems}
           handleResetToInitial={handleResetToInitial}
           handleMarkAllAsComplete={handleMarkAllAsComplete}
+          handleMarkAllAsInComplete={handleMarkAllAsInComplete}
         />
       </main>
 

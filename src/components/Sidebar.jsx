@@ -6,6 +6,7 @@ export default function Sidebar({
   handleRemoveAllItems,
   handleResetToInitial,
   handleMarkAllAsComplete,
+  handleMarkAllAsInComplete,
 }) {
   return (
     <div className="sidebar">
@@ -14,6 +15,7 @@ export default function Sidebar({
         handleRemoveAllItems={handleRemoveAllItems}
         handleResetToInitial={handleResetToInitial}
         handleMarkAllAsComplete={handleMarkAllAsComplete}
+        handleMarkAllAsInComplete={handleMarkAllAsInComplete}
       />
     </div>
   );
